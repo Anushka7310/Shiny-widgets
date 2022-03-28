@@ -1,7 +1,7 @@
 library(shiny)
 library(ggplot2)
 
-shinyServer(function(output, input)({
+shinyServer(function(input, output)({
 
   var <- reactive({
     switch(input$data1,
