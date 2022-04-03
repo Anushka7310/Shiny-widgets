@@ -1,19 +1,17 @@
 library(shiny)
 shinyUI(fluidPage(
-  titlePanel("File Input"),
+  titlePanel("Demo - File Input - Upload multiple files"),
   sidebarLayout(
     sidebarPanel(
       fileInput("file", "Upload the file", multiple = TRUE),
-      helpText("Default max, file size is 9MB"),
-      tags$hr(),
-      h5(helpText("Select the read,table parameters below")),
+      helpText("Default max. file size is 5MB"),
+      helpText("Select the read.table parameters below"),
       checkboxInput(
         inputId = 'header',
         label = 'Header',
-        value = FALSE
+        value = TRUE
       ),
-      checkboxInput(inputId = "stringFactors", label = "stringFactors", FALSE),
-      br(),
+      checkboxInput(inputId = "stringAsFactors", "stringAsFactors", FALSE),
       radioButtons(
         inputId = 'sep',
         label = 'Separator',
@@ -25,8 +23,9 @@ shinyUI(fluidPage(
         ),
         selected = ','
       ),
-
+      uiOutput("selectfile")
     ),
     mainPanel(uiOutput("tb"))
+
   )
 ))
